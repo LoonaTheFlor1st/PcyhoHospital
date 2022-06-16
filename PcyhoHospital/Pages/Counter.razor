@@ -1,85 +1,9 @@
-﻿@page "/counter"
+﻿@page "/Doctor"
 
-<PageTitle>Calculator</PageTitle>
+<PageTitle>Сотрудники</PageTitle>
 
-<h1>OsnovaCalculator</h1>
-<p>FirstNumber</p>
-<input inputmode="numeric" @bind-value="firstNumber"/>
-<p>SecondNumber</p>
-<input inputmode="numeric" @bind-value="secondNumber"/>
-<h2>@result</h2>
-<button @onclick="Sum">Sum</button>
-<button @onclick="Diff">Diff</button>
-<button @onclick="Mult">Mult</button>
-<button @onclick="Division">Division</button>
-<h1 style="color:red">@errorMessage</h1>
+<h1>Действующие врачи</h1>
+
 @code {
-
-	private string firstNumber { get; set; } = "1488";
-	private string secondNumber { get; set; } = "222";
-
-	private int result { get; set; } = 0;
-
-	private void Sum()
-	{
-		var firstNumberResult = 0;
-		var secondNumberResult = 0;
-		if (int.TryParse(firstNumber, out firstNumberResult) &
-		int.TryParse(secondNumber, out secondNumberResult))
-		{
-			result = firstNumberResult + secondNumberResult;
-		}
-		else
-		{
-			errorMessage = "fjjjjjjjjjjjjjjjjj";
-		}
-	}
-	private string errorMessage { get; set; } = "";
-
-	private void Diff()
-	{
-		var firstNumberResult = 0;
-		var secondNumberResult = 0;
-		if (int.TryParse(firstNumber, out firstNumberResult) &
-		int.TryParse(secondNumber, out secondNumberResult))
-		{
-			result = firstNumberResult - secondNumberResult;
-		}
-		else
-		{
-			errorMessage = "fjjjjjjjjjjjjjjjjj";
-		}
-	}
-	
-	private void Mult()
-	{
-		var firstNumberResult = 0;
-		var secondNumberResult = 0;
-		if (int.TryParse(firstNumber, out firstNumberResult) &
-		int.TryParse(secondNumber, out secondNumberResult))
-		{
-			result = firstNumberResult / secondNumberResult;
-		}
-		else
-		{
-			errorMessage = "fjjjjjjjjjjjjjjjjj";
-		}
-	}
-
-	private void Division()
-	{
-		var firstNumberResult = 0;
-		var secondNumberResult = 0;
-		if (int.TryParse(firstNumber, out firstNumberResult) &
-		int.TryParse(secondNumber, out secondNumberResult))
-		{
-			result = firstNumberResult * secondNumberResult;
-		}
-		else
-		{
-			errorMessage = "fjjjjjjjjjjjjjjjjj";
-		}
-	}
-
 }
 
