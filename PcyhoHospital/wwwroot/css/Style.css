@@ -1,3 +1,16 @@
 ﻿body {
     background-color:lightgray
 }
+
+#white {
+    background-color: #fff;
+    width: 100%;
+}
+header {
+    width: calc(100vw - 202px);
+    background: white;
+    height: 56px;
+}
+/*.top-row{
+    width: 100vw;
+}*/
