@@ -8,7 +8,10 @@
 }
 
 header {
-    width: calc(100vw - 202px);
+    width: calc(101vw - 203px);
     background: white;
-    height: 56px;
+    height: 59px;
+}
+.angled-gradient {
+    background: linear-gradient(70deg, #B7410E, pink);
 }
