@@ -15,3 +15,40 @@ header {
 .angled-gradient {
     background: linear-gradient(70deg, #B7410E, pink);
 }
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    min-height: 2em;
+    background: lightpink;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.Site-content {
+    flex: 1;
+}
