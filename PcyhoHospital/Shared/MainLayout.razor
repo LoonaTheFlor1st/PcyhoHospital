@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationService
 
 <div class="page">
     <div class="sidebar">
@@ -24,8 +25,8 @@
             </form>
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Войти</button>
-                <button type="button" class="btn btn-warning">Зарегистрироваться</button>
+                <button type="button" class="btn btn-outline-light me-2" onclick=@NavigateToSign> Войти</button>
+                <button type="button"  class="btn btn-warning" onclick=@NavigationToSi>Зарегистрироваться</button>
             </div>
         </div>
 
@@ -53,3 +54,14 @@
     
 
 </div>
+
+@code{
+    public void NavigateToSign()
+    {
+        NavigationService.NavigateTo("/in");
+    }
+     public void NavigationToSi()
+    {
+        NavigationService.NavigateTo("/Register");
+    }
+}
