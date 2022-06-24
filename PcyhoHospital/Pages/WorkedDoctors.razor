@@ -1,4 +1,5 @@
 ﻿@page "/Doctor"
+@inject NavigationManager NavigationService
 @using PcyhoHospital.Models
 @inject WorkbazeContext DB
 <PageTitle>Сотрудники</PageTitle>
@@ -21,7 +22,7 @@
                         <p class="card-text">@doctor.Name </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" onclick=@(() => Navigate(doctor.Id)) class="btn btn-sm btn-outline-secondary">View</button>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>
@@ -40,5 +41,10 @@
     {
         Doctors =  DB.Doctors.ToList();
     }
+    public void Navigate(int id)
+    {
+        NavigationService.NavigateTo($"/Person/{id}");
+    }
 }
+
 

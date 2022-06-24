@@ -1,0 +1,39 @@
+﻿@page "/Person/{Id:int}"
+@using PcyhoHospital.Models
+@inject WorkbazeContext DB
+CurrentDoctor != null
+
+
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card h-100">
+            <img class="bd-placeholder-img card-img-top" src="#" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" />
+            <div class="card-body">
+                <img src=@($"images/Client{CurrentDoctor.Id}.png") />
+                <h5 class="card-title">@CurrentDoctor.Name</h5>
+                 <p class="card-text">@CurrentDoctor.SpecializationId</p>
+                 <p class="card-text">@CurrentDoctor.Schedule</p>
+                 <p class="card-text">@CurrentDoctor.Branch</p>
+                 <p class="card-text">@CurrentDoctor.FunctionId</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@code {
+    [Parameter]
+    public int Id {get;set;}
+
+    public Models.Doctor CurrentDoctor = new();
+    protected override async Task OnInitializedAsync()
+    {
+        CurrentDoctor = DB.Doctors.FirstOrDefault(d => d.Id == Id);
+    }
+ }
