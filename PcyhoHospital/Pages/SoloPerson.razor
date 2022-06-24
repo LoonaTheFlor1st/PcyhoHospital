@@ -2,33 +2,34 @@
 @using PcyhoHospital.Models
 @using Microsoft.EntityFrameworkCore
 @inject WorkbazeContext DB;
-Current != null
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
         <div class="card h-100">
             <div class="card-body">
-                <img class="bd-placeholder-img card-img-top" src=@($"images/Doctor{CurrentDoctor.Id}.jpg")  aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+                <img class="bd-placeholder-img card-img-top" src=@($"images/Doctor{CurrentDoctor.Id}.jpg") aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" />
                 <h5 class="card-title">@CurrentDoctor.Name</h5>
-                 <p class="card-text">Специализация:<b>@CurrentDoctor.Specialization.Name</b></p>
-                 <p class="card-text">Время начала приёма:<b>@CurrentDoctor.ScheduleNavigation.VisitStart</b></p>
-                  <p class="card-text">Время окончания приёма:<b>@CurrentDoctor.ScheduleNavigation.VisitEnd</b></p>
-                 <p class="card-text">Отделение:<b>@CurrentDoctor.BranchNavigation.Name</b></p>
-                 <p class="card-text">Должность:<b>@CurrentDoctor.Function.Name</b></p>
+                <p class="card-text">Специализация:<b>@CurrentDoctor.Specialization.Name</b></p>
+                <p class="card-text">Время начала приёма:<b>@CurrentDoctor.ScheduleNavigation.VisitStart</b></p>
+                <p class="card-text">Время окончания приёма:<b>@CurrentDoctor.ScheduleNavigation.VisitEnd</b></p>
+                <p class="card-text">Отделение:<b>@CurrentDoctor.BranchNavigation.Name</b></p>
+                @if (CurrentDoctor.Function != null)
+                {
+                    <p class="card-text">Должность:<b>@CurrentDoctor.Function.Name</b></p>
+                }
             </div>
             <div class="card-footer">
-                
             </div>
         </div>
     </div>
 
 
 </div>
- 
+
 
 @code {
     [Parameter]
-    public int Id {get;set;}
+    public int Id { get; set; }
 
     public Models.Doctor CurrentDoctor = new();
     protected override async Task OnInitializedAsync()

@@ -1,0 +1,20 @@
+﻿@page "/siks"
+@using PcyhoHospital.Models
+@inject WorkbazeContext DB
+
+<PageTitle>Больные</PageTitle>
+
+<h1>Больные</h1>
+@foreach (var sick in Sick) {
+
+    <P>@sick.Name <br>@sick.PersonalInformation </P>
+
+    }
+
+@code {
+       List<Sick> Sick = new();
+    protected override async Task OnInitializedAsync()
+    {
+        Sick =  DB.Sicks.ToList();
+    }
+}
