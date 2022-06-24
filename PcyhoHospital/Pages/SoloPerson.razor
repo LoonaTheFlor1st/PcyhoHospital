@@ -1,31 +1,30 @@
 ﻿@page "/Person/{Id:int}"
 @using PcyhoHospital.Models
-@inject WorkbazeContext DB
-CurrentDoctor != null
-
-
+@using Microsoft.EntityFrameworkCore
+@inject WorkbazeContext DB;
 
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
         <div class="card h-100">
-            <img class="bd-placeholder-img card-img-top" src="#" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" />
             <div class="card-body">
-                <img src=@($"images/Client{CurrentDoctor.Id}.png") />
+                <img class="bd-placeholder-img card-img-top" src=@($"images/Doctor{CurrentDoctor.Id}.jpg")  aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"/>
                 <h5 class="card-title">@CurrentDoctor.Name</h5>
-                 <p class="card-text">@CurrentDoctor.SpecializationId</p>
-                 <p class="card-text">@CurrentDoctor.Schedule</p>
-                 <p class="card-text">@CurrentDoctor.Branch</p>
-                 <p class="card-text">@CurrentDoctor.FunctionId</p>
+                 <p class="card-text">Специализация:<b>@CurrentDoctor.Specialization.Name</b></p>
+                 <p class="card-text">Время начала приёма:<b>@CurrentDoctor.ScheduleNavigation.VisitStart</b></p>
+                  <p class="card-text">Время окончания приёма:<b>@CurrentDoctor.ScheduleNavigation.VisitEnd</b></p>
+                 <p class="card-text">Отделение:<b>@CurrentDoctor.BranchNavigation.Name</b></p>
+                 <p class="card-text">Должность:<b>@CurrentDoctor.Function.Name</b></p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                
             </div>
         </div>
     </div>
 
 
 </div>
+ 
 
 @code {
     [Parameter]
@@ -34,6 +33,6 @@ CurrentDoctor != null
     public Models.Doctor CurrentDoctor = new();
     protected override async Task OnInitializedAsync()
     {
-        CurrentDoctor = DB.Doctors.FirstOrDefault(d => d.Id == Id);
+        CurrentDoctor = DB.Doctors.Include(d => d.Specialization).Include(d => d.BranchNavigation).Include(d => d.Function).Include(d => d.ScheduleNavigation).FirstOrDefault(d => d.Id == Id);
     }
  }
